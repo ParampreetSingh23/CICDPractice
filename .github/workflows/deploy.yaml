@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/cicdpractice .
+          docker build --provenance=false -t ${{ secrets.DOCKER_USERNAME }}/cicdpractice .
 
       - name: Push Docker Image
         run: |

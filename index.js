@@ -13,6 +13,9 @@ app.get('/cloud', (req, res) => {
 app.get("/me", (req, res) => {
   res.json({ name: "Parampreet Singh", role: "Software Engineer" });
 });
+app.get("/health", (req, res) => { 
+  res.json({ status: "Healthy" });
+ });
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
