@@ -1,0 +1,40 @@
+name : CI/CD Pipeline Practice
+
+on : 
+  push:
+    branches:
+      - main
+jobs :
+ build : 
+  runs-on : ubuntu-latest
+
+  steps:
+    - name: Checlout code
+      uses: actions/checkout@v4
+    - name: Login into Docker Hub
+      uses: docker/login-action@v3  
+      with:
+        username: ${{ secrects.DOCKER_USERNAME }}
+        password: ${{ secrects.DOCKER_PASSWORD }}
+    - name: Build Docker Image
+      run : |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/cicdpractice:latest .
+    
+    - name: Push Docker Image
+      run: |
+        docker push ${{ secrets.DOCKER_PASSWORD }}/cicdpractice:latest
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps: 
+     - name: Deploy to EC2
+       uses: appleboy/ssh-action@v1.0.3
+       with: 
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+            cd ~/CICDPractice
+            docker compose pull
+            docker compose up -d
