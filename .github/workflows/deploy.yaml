@@ -21,11 +21,11 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/cicdpractice:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/cicdpractice .
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/cicdpractice:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/cicdpractice
 
   deploy:   # <-- SAME LEVEL as build
     needs: build
