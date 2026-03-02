@@ -10,6 +10,9 @@ app.get('/', (req, res) => {
 app.get('/cloud', (req, res) => {
   res.json({ message: 'Welcome to the CI/CD Project BASICS github actions' });
 });
+app.get("/me", (req, res) => {
+  res.json({ name: "Parampreet Singh", role: "Software Engineer" });
+});
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
