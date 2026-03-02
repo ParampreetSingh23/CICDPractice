@@ -41,4 +41,4 @@ jobs:
           script: |
             cd ~/CICDPractice
             docker compose pull
-            dockercompose up -d
+            docker compose up -d
