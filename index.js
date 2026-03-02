@@ -11,7 +11,7 @@ app.get('/cloud', (req, res) => {
   res.json({ message: 'Welcome to the CI/CD Project BASICS github actions' });
 });
 app.get("/me", (req, res) => {
-  res.json({ name: "Parampreet Singh", role: "Software Engineer" });
+  res.json({ name: "Parampreet Singh", role: "Software Engineer" , message: "This is my first CI/CD pipeline project using GitHub Actions and Docker." });
 });
 app.get("/health", (req, res) => { 
   res.json({ status: "Healthy" });
